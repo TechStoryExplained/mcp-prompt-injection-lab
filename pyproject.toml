@@ -1,0 +1,27 @@
+[project]
+name = "mcp-checkout-lab"
+version = "0.1.0"
+description = "Smallest reproducible MCP checkout-security lab (Tech Story companion repo)"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp==2.3.0",
+    "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+agent = ["anthropic>=1.13"]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["lab"]
+
+[tool.setuptools.package-data]
+lab = ["config/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

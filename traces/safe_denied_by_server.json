@@ -1,0 +1,264 @@
+{
+  "label": "safe_denied_by_server",
+  "title": "Safe, layer 2: direct restart (host bypassed) refused by server scope check",
+  "mode": "safe",
+  "layer": "2 (server)",
+  "outcome": {
+    "server_lists_restart_service": true,
+    "is_error": true,
+    "text": "Error executing tool restart_service: forbidden: token for principal 'investigator' lacks scope 'deploy:restart' (has: deploy:read)",
+    "restarts_recorded": []
+  },
+  "events": [
+    {
+      "kind": "http",
+      "actor": "direct-client (host bypassed)",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "server/discover"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "server/discover",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "cacheScope": "private",
+            "capabilities": {
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {
+                "listChanged": true,
+                "subscribe": true
+              },
+              "tools": {
+                "listChanged": true
+              }
+            },
+            "resultType": "complete",
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "deploy",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "direct-client (host bypassed)",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/list"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "method": "tools/list",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "cacheScope": "private",
+            "resultType": "complete",
+            "tools": [
+              {
+                "annotations": {
+                  "readOnlyHint": true
+                },
+                "description": "Deployment history for a service.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "title": "Service",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "service"
+                  ],
+                  "title": "get_deployment_statusArguments"
+                },
+                "name": "get_deployment_status"
+              },
+              {
+                "annotations": {
+                  "readOnlyHint": true
+                },
+                "description": "Current config for a service, with the diff against the previous deploy.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "title": "Service",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "service"
+                  ],
+                  "title": "read_configArguments"
+                },
+                "name": "read_config"
+              },
+              {
+                "annotations": {
+                  "destructiveHint": true,
+                  "readOnlyHint": false
+                },
+                "description": "Restart a service in an environment.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "title": "Service",
+                      "type": "string"
+                    },
+                    "environment": {
+                      "title": "Environment",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "service",
+                    "environment"
+                  ],
+                  "title": "restart_serviceArguments"
+                },
+                "name": "restart_service"
+              }
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "deploy",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "direct-client (host bypassed)",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/call",
+          "mcp-name": "restart_service"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "tools/call",
+          "params": {
+            "name": "restart_service",
+            "arguments": {
+              "service": "payment",
+              "environment": "prod"
+            },
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "result": {
+            "content": [
+              {
+                "text": "Error executing tool restart_service: forbidden: token for principal 'investigator' lacks scope 'deploy:restart' (has: deploy:read)",
+                "type": "text"
+              }
+            ],
+            "isError": true,
+            "resultType": "complete",
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "deploy",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

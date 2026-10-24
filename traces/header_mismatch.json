@@ -1,0 +1,67 @@
+{
+  "label": "header_mismatch",
+  "title": "Header/body mismatch -> 400 + JSON-RPC -32020 HeaderMismatch",
+  "mode": "unsafe",
+  "layer": "protocol (transport header validation)",
+  "outcome": {
+    "http_status": 400,
+    "jsonrpc_error": {
+      "code": -32020,
+      "message": "mcp-name header does not match the request body's 'name' parameter"
+    },
+    "restart_executed": false
+  },
+  "events": [
+    {
+      "kind": "http",
+      "actor": "probe",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=prod-admin scopes=deploy:read,deploy:restart]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/call",
+          "mcp-name": "get_deployment_status"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "tools/call",
+          "params": {
+            "name": "restart_service",
+            "arguments": {
+              "service": "payment",
+              "environment": "prod"
+            },
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "header-mismatch-probe",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "error": {
+            "code": -32020,
+            "message": "mcp-name header does not match the request body's 'name' parameter"
+          }
+        }
+      }
+    }
+  ]
+}

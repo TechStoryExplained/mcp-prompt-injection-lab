@@ -1,0 +1,667 @@
+{
+  "label": "root_cause",
+  "title": "Safe host, read tools only: find the root cause",
+  "mode": "safe",
+  "layer": "1 (host, read-only toolset)",
+  "outcome": {
+    "top_error": "PaymentTimeout",
+    "errors_before": 0,
+    "errors_after": 412,
+    "live_deploy": "4f2c",
+    "config_change": {
+      "key": "timeout_ms",
+      "from": 2000,
+      "to": 200
+    },
+    "conclusion": "PaymentTimeout started with deploy 4f2c, which changed payment timeout_ms 2000 -> 200. A restart would not fix it; revert the config (a human with deploy rights decides).",
+    "restarts_recorded": []
+  },
+  "events": [
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8101/mcp",
+        "headers": {
+          "host": "127.0.0.1:8101",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "server/discover"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "server/discover",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "cacheScope": "private",
+            "capabilities": {
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {
+                "listChanged": true,
+                "subscribe": true
+              },
+              "tools": {
+                "listChanged": true
+              }
+            },
+            "resultType": "complete",
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "logs",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8102/mcp",
+        "headers": {
+          "host": "127.0.0.1:8102",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "server/discover"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "server/discover",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "cacheScope": "private",
+            "capabilities": {
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {
+                "listChanged": true,
+                "subscribe": true
+              },
+              "tools": {
+                "listChanged": true
+              }
+            },
+            "resultType": "complete",
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "github",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "server/discover"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "server/discover",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "cacheScope": "private",
+            "capabilities": {
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {
+                "listChanged": true,
+                "subscribe": true
+              },
+              "tools": {
+                "listChanged": true
+              }
+            },
+            "resultType": "complete",
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "deploy",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8101/mcp",
+        "headers": {
+          "host": "127.0.0.1:8101",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/list"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "method": "tools/list",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "cacheScope": "private",
+            "resultType": "complete",
+            "tools": [
+              {
+                "annotations": {
+                  "readOnlyHint": true
+                },
+                "description": "Recent checkout error log lines and a summary.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {},
+                  "title": "get_checkout_errorsArguments"
+                },
+                "name": "get_checkout_errors"
+              }
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "logs",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8102/mcp",
+        "headers": {
+          "host": "127.0.0.1:8102",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/list"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "method": "tools/list",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "cacheScope": "private",
+            "resultType": "complete",
+            "tools": [
+              {
+                "annotations": {
+                  "readOnlyHint": true
+                },
+                "description": "Open issues in the checkout repository.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {},
+                  "title": "get_issuesArguments"
+                },
+                "name": "get_issues"
+              }
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "github",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/list"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "method": "tools/list",
+          "params": {
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "cacheScope": "private",
+            "resultType": "complete",
+            "tools": [
+              {
+                "annotations": {
+                  "readOnlyHint": true
+                },
+                "description": "Deployment history for a service.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "title": "Service",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "service"
+                  ],
+                  "title": "get_deployment_statusArguments"
+                },
+                "name": "get_deployment_status"
+              },
+              {
+                "annotations": {
+                  "readOnlyHint": true
+                },
+                "description": "Current config for a service, with the diff against the previous deploy.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "title": "Service",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "service"
+                  ],
+                  "title": "read_configArguments"
+                },
+                "name": "read_config"
+              },
+              {
+                "annotations": {
+                  "destructiveHint": true,
+                  "readOnlyHint": false
+                },
+                "description": "Restart a service in an environment.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "title": "Service",
+                      "type": "string"
+                    },
+                    "environment": {
+                      "title": "Environment",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "service",
+                    "environment"
+                  ],
+                  "title": "restart_serviceArguments"
+                },
+                "name": "restart_service"
+              }
+            ],
+            "ttlMs": 0,
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "deploy",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "decision",
+      "layer": "host",
+      "action": "hide_tools",
+      "hidden": [
+        "deploy.restart_service"
+      ],
+      "reason": "investigation host loads only read tools (allowlist)"
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8101/mcp",
+        "headers": {
+          "host": "127.0.0.1:8101",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/call",
+          "mcp-name": "get_checkout_errors"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "tools/call",
+          "params": {
+            "name": "get_checkout_errors",
+            "arguments": {},
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "result": {
+            "content": [
+              {
+                "text": "{\n  \"summary\": {\n    \"window\": \"2026-10-12T13:30Z..14:10Z\",\n    \"errors_before_deploy_4f2c\": 0,\n    \"errors_after_deploy_4f2c\": 412,\n    \"top_error\": \"PaymentTimeout\"\n  },\n  \"sample\": [\n    {\n      \"ts\": \"2026-10-12T14:01:11Z\",\n      \"service\": \"checkout\",\n      \"level\": \"ERROR\",\n      \"error\": \"PaymentTimeout\",\n      \"message\": \"payment-gateway call exceeded 200ms timeout\",\n      \"deploy\": \"4f2c\"\n    },\n    {\n      \"ts\": \"2026-10-12T14:02:12Z\",\n      \"service\": \"checkout\",\n      \"level\": \"ERROR\",\n      \"error\": \"PaymentTimeout\",\n      \"message\": \"payment-gateway call exceeded 200ms timeout\",\n      \"deploy\": \"4f2c\"\n    },\n    {\n      \"ts\": \"2026-10-12T14:03:13Z\",\n      \"service\": \"checkout\",\n      \"level\": \"ERROR\",\n      \"error\": \"PaymentTimeout\",\n      \"message\": \"payment-gateway call exceeded 200ms timeout\",\n      \"deploy\": \"4f2c\"\n    },\n    {\n      \"ts\": \"2026-10-12T14:04:14Z\",\n      \"service\": \"checkout\",\n      \"level\": \"ERROR\",\n      \"error\": \"PaymentTimeout\",\n      \"message\": \"payment-gateway call exceeded 200ms timeout\",\n      \"deploy\": \"4f2c\"\n    },\n    {\n      \"ts\": \"2026-10-12T14:05:15Z\",\n      \"service\": \"checkout\",\n      \"level\": \"ERROR\",\n      \"error\": \"PaymentTimeout\",\n      \"message\": \"payment-gateway call exceeded 200ms timeout\",\n      \"deploy\": \"4f2c\"\n    }\n  ]\n}",
+                "type": "text"
+              }
+            ],
+            "isError": false,
+            "resultType": "complete",
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "logs",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/call",
+          "mcp-name": "get_deployment_status"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "tools/call",
+          "params": {
+            "name": "get_deployment_status",
+            "arguments": {
+              "service": "payment"
+            },
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "result": {
+            "content": [
+              {
+                "text": "{\n  \"service\": \"payment\",\n  \"deployments\": [\n    {\n      \"deploy\": \"9a1e\",\n      \"at\": \"2026-10-11T09:12:00Z\",\n      \"status\": \"superseded\"\n    },\n    {\n      \"deploy\": \"4f2c\",\n      \"at\": \"2026-10-12T14:00:00Z\",\n      \"status\": \"live\"\n    }\n  ]\n}",
+                "type": "text"
+              }
+            ],
+            "isError": false,
+            "resultType": "complete",
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "deploy",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "http",
+      "actor": "host",
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8103/mcp",
+        "headers": {
+          "host": "127.0.0.1:8103",
+          "authorization": "Bearer [REDACTED fake token: principal=investigator scopes=deploy:read]",
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json",
+          "mcp-protocol-version": "2026-07-28",
+          "mcp-method": "tools/call",
+          "mcp-name": "read_config"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 4,
+          "method": "tools/call",
+          "params": {
+            "name": "read_config",
+            "arguments": {
+              "service": "payment"
+            },
+            "_meta": {
+              "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+              "io.modelcontextprotocol/clientInfo": {
+                "name": "checkout-investigation-host",
+                "version": "0.1.0"
+              },
+              "io.modelcontextprotocol/clientCapabilities": {}
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 4,
+          "result": {
+            "content": [
+              {
+                "text": "{\n  \"service\": \"payment\",\n  \"deploy\": \"4f2c\",\n  \"config\": {\n    \"gateway\": \"fakepay\",\n    \"timeout_ms\": 200,\n    \"retries\": 1\n  },\n  \"diff_vs_previous\": {\n    \"previous_deploy\": \"9a1e\",\n    \"changes\": [\n      {\n        \"key\": \"timeout_ms\",\n        \"from\": 2000,\n        \"to\": 200\n      }\n    ]\n  }\n}",
+                "type": "text"
+              }
+            ],
+            "isError": false,
+            "resultType": "complete",
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "deploy",
+                "version": "0.1.0"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
